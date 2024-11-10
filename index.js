@@ -10,13 +10,13 @@ import { dbConnection } from "./utils/index.js";
 dotenv.config();
 dbConnection();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8800;
 
 const app = express();
 
 app.use(
   cors({
-    origin: true, // This allows all origins
+    origin: process.env.CLIENT_URL, // Only allow requests from the client URL
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
